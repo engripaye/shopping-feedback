@@ -27,8 +27,7 @@ public class Feedback {
 
     }
 
-    public Feedback(Long id, String name, String contact, Integer rating, String itemsNotFound, String priceToReduce, String improvementSuggestion) {
-        this.id = id;
+    public Feedback(String name, String contact, Integer rating, String itemsNotFound, String priceToReduce, String improvementSuggestion) {
         this.name = name;
         this.contact = contact;
         this.rating = rating;
