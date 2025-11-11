@@ -1,6 +1,7 @@
 package dev.engripaye.shoppingfeedback.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
