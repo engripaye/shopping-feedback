@@ -3,9 +3,10 @@ package dev.engripaye.shoppingfeedback.service;
 import dev.engripaye.shoppingfeedback.dto.FeedbackRequest;
 import dev.engripaye.shoppingfeedback.model.Feedback;
 import dev.engripaye.shoppingfeedback.repository.FeedbackRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class FeedbackService {
 
     private final FeedbackRepository repository;
