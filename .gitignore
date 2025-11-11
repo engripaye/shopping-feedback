@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Google Service Account credentials
+src/main/resources/service-account.json
+
