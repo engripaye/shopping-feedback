@@ -18,7 +18,7 @@ public class FeedbackRequest {
     @Max(5)
     private Integer rating;
 
-    private String itemNotFound; //optional
+    private String itemsNotFound; //optional
     private String priceToReduce; // optional
     @Size(max = 2000)
     private String improvementSuggestion;
@@ -47,12 +47,12 @@ public class FeedbackRequest {
         this.rating = rating;
     }
 
-    public String getItemNotFound() {
-        return itemNotFound;
+    public String getItemsNotFound() {
+        return itemsNotFound;
     }
 
-    public void setItemNotFound(String itemNotFound) {
-        this.itemNotFound = itemNotFound;
+    public void setItemsNotFound(String itemsNotFound) {
+        this.itemsNotFound = itemsNotFound;
     }
 
     public String getPriceToReduce() {

@@ -14,7 +14,7 @@ public class Feedback {
     private String name;
     private String contact;
     private Integer rating; // 1-5
-    @Column(columnDefinition = "Text")
+    @Column(name = "items_not_found", columnDefinition = "TEXT")
     private String itemsNotFound;
     @Column(columnDefinition = "Text")
     private String priceToReduce;

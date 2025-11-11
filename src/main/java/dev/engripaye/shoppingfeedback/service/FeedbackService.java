@@ -21,7 +21,7 @@ public class FeedbackService {
                 request.getName(),
                 request.getContact(),
                 request.getRating(),
-                request.getItemNotFound(),
+                request.getItemsNotFound(),
                 request.getPriceToReduce(),
                 request.getImprovementSuggestion()
         );
