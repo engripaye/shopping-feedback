@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 @RestController
@@ -20,7 +22,7 @@ public class FeedbackController {
     }
 
     @PostMapping
-    public ResponseEntity<Feedback> submitFeedback(@Valid @RequestBody FeedbackRequest request){
+    public ResponseEntity<Feedback> submitFeedback(@Valid @RequestBody FeedbackRequest request) throws IOException, GeneralSecurityException {
         Feedback saved = service.createFeedback(request);
         return ResponseEntity.ok(saved);
     }
