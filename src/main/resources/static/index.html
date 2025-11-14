@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Feedback Form</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        /* Reset and basic styles */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
         }
 
         body {
-            background: #f9f9f9;
+            background: linear-gradient(to right, #e3f2fd, #fce4ec);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,35 +27,50 @@
 
         .container {
             background: #ffffff;
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #333;
+            font-weight: 600;
         }
 
         label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 500;
             color: #555;
         }
 
-        input[type="text"],
-        input[type="number"],
-        textarea {
+        input,
+        textarea,
+        select {
             width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 12px 14px;
+            margin: 8px 0 18px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.25s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76,175,80,0.3);
         }
 
         textarea {
@@ -61,66 +79,73 @@
 
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: #4CAF50;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 500;
             cursor: pointer;
             transition: 0.3s;
         }
 
         button:hover {
-            background: #45a049;
+            background: #43a047;
+            transform: translateY(-2px);
+        }
+
+        .success,
+        .error {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .success {
-            margin-top: 15px;
-            padding: 10px;
             background: #d4edda;
             color: #155724;
-            border-radius: 8px;
-            text-align: center;
         }
 
         .error {
-            margin-top: 15px;
-            padding: 10px;
             background: #f8d7da;
             color: #721c24;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
         }
     </style>
 </head>
+
 <body>
 <div class="container">
-    <h2>THANKS FOR SHOPPING WITH US </h2>
+    <h2>THANKS FOR SHOPPING WITH US</h2>
+
     <form id="feedbackForm">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required placeholder="Your name">
+        <label>Name</label>
+        <input type="text" id="name" required placeholder="Your name">
 
-        <label for="contact">Contact</label>
-        <input type="text" id="contact" name="contact" required placeholder="Phone or email">
+        <label>Contact</label>
+        <input type="text" id="contact" required placeholder="Phone or email">
 
-        <label for="rating">Rating (1-5)</label>
-        <input type="number" id="rating" name="rating" min="1" max="5" required>
+        <label>Shopping Rating</label>
+        <select id="rating" required>
+            <option value="" disabled selected>Select rating</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Very Good">Very Good</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+        </select>
 
-        <label for="itemsNotFound">Items Not Found</label>
-        <input type="text" id="itemsNotFound" name="itemsNotFound" placeholder="E.g. Milk, Sugar">
+        <label>Items Not Found</label>
+        <input type="text" id="itemsNotFound" placeholder="E.g. Milk, Sugar">
 
-        <label for="priceToReduce">Price to Reduce</label>
-        <input type="text" id="priceToReduce" name="priceToReduce" placeholder="E.g. Tomatoes are expensive">
+        <label>Price to Reduce</label>
+        <input type="text" id="priceToReduce" placeholder="E.g. Tomatoes are expensive">
 
-        <label for="improvementSuggestion">Improvement Suggestion</label>
-        <textarea id="improvementSuggestion" name="improvementSuggestion" rows="4" placeholder="How can we improve?"></textarea>
+        <label>Improvement Suggestion</label>
+        <textarea id="improvementSuggestion" rows="4" placeholder="How can we improve?"></textarea>
 
         <button type="submit">Submit Feedback</button>
 
@@ -138,7 +163,7 @@
         const data = {
             name: document.getElementById('name').value,
             contact: document.getElementById('contact').value,
-            rating: parseInt(document.getElementById('rating').value),
+            rating: document.getElementById('rating').value,
             itemsNotFound: document.getElementById('itemsNotFound').value,
             priceToReduce: document.getElementById('priceToReduce').value,
             improvementSuggestion: document.getElementById('improvementSuggestion').value
@@ -147,9 +172,7 @@
         try {
             const response = await fetch('http://localhost:8081/api/feedback', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
 
@@ -165,5 +188,6 @@
         }
     });
 </script>
+
 </body>
 </html>
