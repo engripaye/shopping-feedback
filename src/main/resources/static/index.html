@@ -162,9 +162,9 @@
 
     <h2>Thanks for Shopping With Us</h2>
 
-    <form id="feedbackForm">
+    <form id="feedbackForm" autocomplete="off">
         <label>Name</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" autocomplete="off" required>
 
         <label>Contact</label>
         <input
@@ -175,11 +175,12 @@
                 maxlength="11"
                 minlength="11"
                 placeholder="Enter 11-digit phone number"
+                autocomplete="off"
                 required
         />
 
         <label>Rate your shopping for today</label>
-        <select id="rating" name="rating" required>
+        <select id="rating" name="rating" autocomplete="off" required>
             <option value="" disabled selected>Select your rating</option>
             <option value="Excellent">Excellent</option>
             <option value="Very Good">Very Good</option>
@@ -189,13 +190,13 @@
         </select>
 
         <label>Items/Goods Not Found in the Store</label>
-        <input type="text" id="itemsNotFound" name="itemsNotFound">
+        <input type="text" id="itemsNotFound" name="itemsNotFound" autocomplete="off">
 
         <label>Items/Goods you think the price should be reduced</label>
-        <input type="text" id="priceToReduce" name="priceToReduce">
+        <input type="text" id="priceToReduce" name="priceToReduce" autocomplete="off">
 
         <label>How can we Improve your next shopping</label>
-        <textarea id="improvementSuggestion" name="improvementSuggestion" rows="4"></textarea>
+        <textarea id="improvementSuggestion" name="improvementSuggestion" autocomplete="off" rows="4"></textarea>
 
         <button type="submit">Submit Feedback</button>
     </form>
@@ -216,6 +217,8 @@
 
     function closeModal() {
         modal.style.display = 'none';
+        form.reset();
+        document.getElementById("rating").selectedIndex = 0; // Reset select
     }
 
     form.addEventListener('submit', async (e) => {
