@@ -167,7 +167,16 @@
         <input type="text" id="name" name="name" required>
 
         <label>Contact</label>
-        <input type="text" id="contact" name="contact" required>
+        <input
+                type="tel"
+                id="contact"
+                name="contact"
+                pattern="^[0-9]{11}$"
+                maxlength="11"
+                minlength="11"
+                placeholder="Enter 11-digit phone number"
+                required
+        />
 
         <label>Rate your shopping for today</label>
         <select id="rating" name="rating" required>
@@ -212,9 +221,19 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // ---- PHONE NUMBER VALIDATION ----
+        const contact = document.getElementById("contact").value;
+        const phonePattern = /^[0-9]{11}$/;
+
+        if (!phonePattern.test(contact)) {
+            alert("Contact number must be exactly 11 digits (e.g., 09012345678)");
+            return; // stop form submit
+        }
+        // ----------------------------------
+
         const data = {
             name: document.getElementById("name").value,
-            contact: document.getElementById("contact").value,
+            contact: contact, // now validated
             rating: document.getElementById("rating").value,
             itemsNotFound: document.getElementById("itemsNotFound").value,
             priceToReduce: document.getElementById("priceToReduce").value,
@@ -239,6 +258,7 @@
         }
     });
 </script>
+
 
 </body>
 </html>
