@@ -13,7 +13,7 @@ public class Feedback {
     private Long id;
     private String name;
     private String contact;
-    private Integer rating; // 1-5
+    private String rating; // 1-5
     @Column(name = "items_not_found", columnDefinition = "TEXT")
     private String itemsNotFound;
     @Column(columnDefinition = "Text")
@@ -27,7 +27,7 @@ public class Feedback {
 
     }
 
-    public Feedback(String name, String contact, Integer rating, String itemsNotFound, String priceToReduce, String improvementSuggestion) {
+    public Feedback(String name, String contact, String rating, String itemsNotFound, String priceToReduce, String improvementSuggestion) {
         this.name = name;
         this.contact = contact;
         this.rating = rating;
@@ -60,11 +60,11 @@ public class Feedback {
         this.contact = contact;
     }
 
-    public Integer getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 

@@ -14,9 +14,9 @@ public class FeedbackRequest {
     @Size(max = 50)
     private String contact;
 
-    @Min(1)
-    @Max(5)
-    private Integer rating;
+    @NotBlank(message = "Rating is required")
+    @Size(max = 20)
+    private String rating;
 
     private String itemsNotFound; //optional
     private String priceToReduce; // optional
@@ -39,11 +39,11 @@ public class FeedbackRequest {
         this.contact = contact;
     }
 
-    public Integer getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
