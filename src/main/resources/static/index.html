@@ -212,12 +212,12 @@
         e.preventDefault();
 
         const data = {
-            name: name.value,
-            contact: contact.value,
-            rating: rating.value,
-            itemsNotFound: itemsNotFound.value,
-            priceToReduce: priceToReduce.value,
-            improvementSuggestion: improvementSuggestion.value
+            name: document.getElementById("name").value,
+            contact: document.getElementById("contact").value,
+            rating: document.getElementById("rating").value,
+            itemsNotFound: document.getElementById("itemsNotFound").value,
+            priceToReduce: document.getElementById("priceToReduce").value,
+            improvementSuggestion: document.getElementById("improvementSuggestion").value
         };
 
         try {
