@@ -169,8 +169,9 @@
         <label>Contact</label>
         <input type="text" id="contact" name="contact" required>
 
-        <label>Shopping Rating</label>
+        <label>Rate your shopping for today</label>
         <select id="rating" name="rating" required>
+            <option value="" disabled selected>Select your rating</option>
             <option value="Excellent">Excellent</option>
             <option value="Very Good">Very Good</option>
             <option value="Good">Good</option>
@@ -178,13 +179,13 @@
             <option value="Poor">Poor</option>
         </select>
 
-        <label>Items Not Found</label>
+        <label>Items Not Found in the Store</label>
         <input type="text" id="itemsNotFound" name="itemsNotFound">
 
-        <label>Price to Reduce</label>
+        <label>Goods you think the price should be reduced</label>
         <input type="text" id="priceToReduce" name="priceToReduce">
 
-        <label>Improvement Suggestion</label>
+        <label>How can we Improve your next shopping</label>
         <textarea id="improvementSuggestion" name="improvementSuggestion" rows="4"></textarea>
 
         <button type="submit">Submit Feedback</button>
