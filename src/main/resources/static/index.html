@@ -243,22 +243,19 @@
             improvementSuggestion: document.getElementById("improvementSuggestion").value
         };
 
-        try {
-            const res = await fetch('https://shopping-feedback.onrender.com/api/feedback', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
+        // 🚀 INSTANT SUCCESS FEEDBACK for user
+        modal.style.display = 'flex';
+        form.reset();
+        document.getElementById("rating").selectedIndex = 0;
 
-            if (res.ok) {
-                modal.style.display = 'flex';
-                form.reset();
-            } else {
-                alert('Failed to submit feedback');
-            }
-        } catch (err) {
-            alert('Network error');
-        }
+        // 🚀 Save in the background (async)
+        fetch('https://shopping-feedback.onrender.com/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).catch(err => {
+            console.error("Background save failed:", err);
+        });
     });
 </script>
 
