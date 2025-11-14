@@ -25,7 +25,7 @@ public class FeedbackService {
         feedback.setName(request.getName());
         feedback.setContact(request.getContact());
 
-        feedback.setRating(request.getRating() != null ? request.getRating().toString() : null);
+        feedback.setRating(request.getRating());
         feedback.setItemsNotFound(request.getItemsNotFound());
         feedback.setPriceToReduce(request.getPriceToReduce());
         feedback.setImprovementSuggestion(request.getImprovementSuggestion());
