@@ -6,131 +6,164 @@
     <title>Shopping Feedback Form</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background: linear-gradient(to right, #e3f2fd, #fce4ec);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-image: url("https://img.freepik.com/free-photo/shopping-cart-full-products-inside-supermarket-aisle_123827-28164.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             min-height: 100vh;
-            padding: 20px;
+            position: relative;
+        }
+
+        .blur-bg {
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(9px);
+            background: rgba(255, 255, 255, 0.15);
+            z-index: 0;
         }
 
         .container {
-            background: #ffffff;
-            max-width: 520px;
+            background: rgba(255, 255, 255, 0.95);
             width: 100%;
+            max-width: 520px;
             padding: 35px;
-            border-radius: 18px;
-            box-shadow: 0 7px 25px rgba(0,0,0,0.08);
-            animation: fadeIn 0.4s ease-in-out;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            z-index: 2;
+            position: relative;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px);}
-            to { opacity: 1; transform: translateY(0);}
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 110px;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 25px;
             color: #333;
+            margin-bottom: 15px;
             font-weight: 600;
+            font-size: 22px;
         }
 
         label {
-            font-size: 14px;
             font-weight: 500;
-            color: #555;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
         }
 
-        input,
-        textarea,
-        select {
+        input, select, textarea {
             width: 100%;
-            padding: 12px 14px;
-            margin: 8px 0 18px;
-            border: 1px solid #dcdcdc;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
             border-radius: 10px;
             font-size: 15px;
-            outline: none;
-            transition: 0.25s;
+            transition: 0.3s;
         }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
+        input:focus, select:focus, textarea:focus {
             border-color: #4CAF50;
-            box-shadow: 0 0 5px rgba(76,175,80,0.3);
-        }
-
-        textarea {
-            resize: vertical;
+            outline: none;
+            box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
         }
 
         button {
             width: 100%;
             padding: 14px;
             background: #4CAF50;
-            color: white;
             border: none;
             border-radius: 10px;
+            color: white;
             font-size: 17px;
-            font-weight: 500;
             cursor: pointer;
+            font-weight: 600;
             transition: 0.3s;
         }
 
         button:hover {
             background: #43a047;
-            transform: translateY(-2px);
         }
 
-        .success,
-        .error {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
+        /* Success Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 14px;
             text-align: center;
-            font-size: 14px;
-            font-weight: 500;
+            width: 90%;
+            max-width: 350px;
+            animation: pop 0.3s ease;
         }
 
-        .success {
-            background: #d4edda;
-            color: #155724;
+        @keyframes pop {
+            from { transform: scale(0.7); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
         }
 
-        .error {
-            background: #f8d7da;
-            color: #721c24;
+        .modal-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .modal-content p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            background: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
     </style>
 </head>
 
 <body>
+
+<div class="blur-bg"></div>
+
 <div class="container">
-    <h2>THANKS FOR SHOPPING WITH US</h2>
+
+    <!-- Market Logo -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" class="logo" alt="Market Logo">
+
+    <h2>Thanks for Shopping With Us</h2>
 
     <form id="feedbackForm">
         <label>Name</label>
-        <input type="text" id="name" required placeholder="Your name">
+        <input type="text" id="name" name="name" required>
 
         <label>Contact</label>
-        <input type="text" id="contact" required placeholder="Phone or email">
+        <input type="text" id="contact" name="contact" required>
 
         <label>Shopping Rating</label>
-        <select id="rating" required>
-            <option value="" disabled selected>Select rating</option>
+        <select id="rating" name="rating" required>
             <option value="Excellent">Excellent</option>
             <option value="Very Good">Very Good</option>
             <option value="Good">Good</option>
@@ -139,52 +172,62 @@
         </select>
 
         <label>Items Not Found</label>
-        <input type="text" id="itemsNotFound" placeholder="E.g. Milk, Sugar">
+        <input type="text" id="itemsNotFound" name="itemsNotFound">
 
         <label>Price to Reduce</label>
-        <input type="text" id="priceToReduce" placeholder="E.g. Tomatoes are expensive">
+        <input type="text" id="priceToReduce" name="priceToReduce">
 
         <label>Improvement Suggestion</label>
-        <textarea id="improvementSuggestion" rows="4" placeholder="How can we improve?"></textarea>
+        <textarea id="improvementSuggestion" name="improvementSuggestion" rows="4"></textarea>
 
         <button type="submit">Submit Feedback</button>
-
-        <div id="message"></div>
     </form>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <h3>🎉 Feedback Submitted!</h3>
+        <p>Thank you for helping us improve your shopping experience.</p>
+        <button onclick="closeModal()">OK</button>
+    </div>
 </div>
 
 <script>
     const form = document.getElementById('feedbackForm');
-    const messageDiv = document.getElementById('message');
+    const modal = document.getElementById('successModal');
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const data = {
-            name: document.getElementById('name').value,
-            contact: document.getElementById('contact').value,
-            rating: document.getElementById('rating').value,
-            itemsNotFound: document.getElementById('itemsNotFound').value,
-            priceToReduce: document.getElementById('priceToReduce').value,
-            improvementSuggestion: document.getElementById('improvementSuggestion').value
+            name: name.value,
+            contact: contact.value,
+            rating: rating.value,
+            itemsNotFound: itemsNotFound.value,
+            priceToReduce: priceToReduce.value,
+            improvementSuggestion: improvementSuggestion.value
         };
 
         try {
-            const response = await fetch('http://localhost:8081/api/feedback', {
+            const res = await fetch('http://localhost:8081/api/feedback', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
 
-            if (response.ok) {
-                messageDiv.innerHTML = '<div class="success">Feedback submitted successfully!</div>';
+            if (res.ok) {
+                modal.style.display = 'flex';
                 form.reset();
             } else {
-                messageDiv.innerHTML = '<div class="error">Failed to submit feedback.</div>';
+                alert('Failed to submit feedback');
             }
-        } catch (error) {
-            console.error(error);
-            messageDiv.innerHTML = '<div class="error">An error occurred.</div>';
+        } catch (err) {
+            alert('Network error');
         }
     });
 </script>
