@@ -23,6 +23,13 @@
             background-attachment: fixed;
             min-height: 100vh;
             position: relative;
+            /* 🟩 Fix: Center the form */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Keep form above blur */
+            z-index: 1;
         }
 
         .blur-bg {
