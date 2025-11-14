@@ -18,3 +18,5 @@ EXPOSE 8080
 
 # Run the jar
 CMD ["java", "-jar", "target/shopping-feedback-0.0.1-SNAPSHOT.jar"]
+
+
