@@ -1,22 +1,22 @@
-# Use an OpenJDK image
+# Use official OpenJDK 21 image (slim)
 FROM openjdk:21-jdk-slim
 
-# Set the working directory
+# Set working directory inside container
 WORKDIR /app
 
-# Copy Maven/Gradle wrapper and build files
-COPY pom.xml ./
-COPY mvnw ./
+# Copy Maven wrapper and project files
+COPY mvnw pom.xml ./
 COPY .mvn .mvn
 COPY src ./src
 
-# Build the project using Maven wrapper
+# Make Maven wrapper executable
+RUN chmod +x mvnw
+
+# Build the Spring Boot JAR (skip tests for faster build)
 RUN ./mvnw clean package -DskipTests
 
-# Expose the port your Spring Boot app runs on
+# Expose the port your Spring Boot app will run on
 EXPOSE 8080
 
-# Run the jar
+# Run the JAR
 CMD ["java", "-jar", "target/shopping-feedback-0.0.1-SNAPSHOT.jar"]
-
-
