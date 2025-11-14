@@ -241,7 +241,7 @@
         };
 
         try {
-            const res = await fetch('http://localhost:8081/api/feedback', {
+            const res = await fetch('https://shopping-feedback.onrender.com/api/feedback', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
